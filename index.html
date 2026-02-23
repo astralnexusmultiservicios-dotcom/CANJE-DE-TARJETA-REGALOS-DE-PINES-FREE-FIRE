@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="title" content="Astral Nexus | Portal de Canje">
+    <meta name="description" content="Redime tus pines en Astral Nexus. Servicios digitales rápidos y seguros.">
+    <meta name="author" content="Astral Nexus">
+    <meta name="theme-color" content="#2a1b4e">
+    
+    <!-- AdOpt Cookie Banner -->
+    <meta name="adopt-website-id" content="ab80a99d-446a-4213-868e-77b1d62ef425" />
+    <script src="//tag.goadopt.io/injector.js?website_code=ab80a99d-446a-4213-868e-77b1d62ef425" class="adopt-injector" type="text/javascript"></script>
+
+    <title>Astral Nexus | Portal de Canje Avanzado</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SISTEMA DE DISEÑO ACTUALIZADO (MÁS VIVO) --- */
+        :root {
+            /* Fondo base aclarado para ver más detalles */
+            --bg-dark: #130924; 
+            /* Paneles más claros y transparentes */
+            --bg-panel: rgba(30, 18, 55, 0.65);
+            
+            --neon-blue: #00f3ff;
+            --neon-pink: #d946ef; /* Rosa más vibrante */
+            --neon-purple: #9d4edd;
+            --alert-red: #ff2a6d;
+            --success-green: #05ffa1;
+            
+            --neon-cyan: #22d3ee;
+            
+            /* Bordes más brillantes para destacar */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            --backdrop-blur: blur(20px);
+        }
+
+        * { box-sizing: border-box; outline: none; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- FONDO ANIMADO MEJORADO --- */
+        .scifi-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 10%, rgba(112, 0, 255, 0.25), transparent 40%),
+                radial-gradient(circle at 80% 90%, rgba(0, 243, 255, 0.15), transparent 40%),
+                linear-gradient(to bottom, #130924 0%, #1e1b4b 100%);
+        }
+
+        .grid-lines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Líneas más visibles */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .app-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* --- HEADER CON ANIMACIÓN CONSTANTE --- */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+
+        /* Animación de flujo de color constante */
+        @keyframes text-flow {
+            0% { background-position: 0% 50%; filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3)); }
+            50% { background-position: 100% 50%; filter: drop-shadow(0 0 20px rgba(188, 19, 254, 0.6)); }
+            100% { background-position: 0% 50%; filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3)); }
+        }
+
+        .brand-area h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem; /* Un poco más grande */
+            margin: 0;
+            /* Gradiente animado */
+            background: linear-gradient(
+                90deg, 
+                #00f3ff, 
+                #ffffff, 
+                #d946ef, 
+                #ffffff, 
+                #00f3ff
+            );
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            
+            /* Animación constante infinita */
+            animation: text-flow 6s ease infinite; 
+        }
+
+        .brand-area span {
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 5px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .header-separator {
+            height: 2px; /* Un poco más grueso */
+            width: 100%;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), transparent); /* Cambio a rosa/morado */
+            margin-top: 30px;
+            opacity: 0.8;
+            box-shadow: 0 0 20px var(--neon-pink);
+            position: relative;
+        }
+        
+        /* Pequeña luz viajera en el separador */
+        .header-separator::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: 0;
+            width: 100px; height: 6px;
+            background: radial-gradient(circle, #fff, transparent);
+            opacity: 0.7;
+            animation: light-travel 4s ease-in-out infinite;
+        }
+        @keyframes light-travel {
+            0% { left: 10%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { left: 90%; opacity: 0; }
+        }
+
+        .content-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .cyber-card {
+            background: var(--bg-panel);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cyber-card:hover {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 20px rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        /* --- PROTOCOLO --- */
+        .protocol-card {
+            border-left: 4px solid var(--neon-pink);
+            background: linear-gradient(135deg, rgba(30,18,55,0.7), rgba(20,10,40,0.8));
+        }
+
+        .protocol-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .protocol-header h2 {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+        }
+
+        .steps-list {
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* --- ANIMACIÓN DE ENTRADA (TECH SLIDE) --- */
+        @keyframes tech-slide-in {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            
+            /* Interactividad: Padding y transición para hover */
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+
+            /* Estado inicial para animación */
+            opacity: 0;
+            animation: tech-slide-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Retrasos escalonados para efecto cascada */
+        .step-row:nth-child(1) { animation-delay: 0.1s; }
+        .step-row:nth-child(2) { animation-delay: 0.3s; }
+        .step-row:nth-child(3) { animation-delay: 0.5s; }
+
+        /* Efecto Hover Interactivo */
+        .step-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+            box-shadow: inset 0 0 20px rgba(217, 70, 239, 0.1);
+        }
+        
+        .step-row:hover .step-num {
+            background: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink);
+            color: #000;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 36px; height: 36px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Orbitron';
+            color: #fff;
+            background: rgba(217, 70, 239, 0.2);
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(217, 70, 239, 0.3);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .step-info h3 { margin: 0 0 5px; color: var(--neon-blue); font-size: 1.15rem; font-weight: 600; }
+        .step-info p { margin: 0; color: #cbd5e1; line-height: 1.6; font-size: 1rem; }
+
+        /* --- ANIMACIÓN DE ALERTA (PULSE) --- */
+        @keyframes pulse-alert {
+            0% { transform: scale(1); filter: drop-shadow(0 0 0px var(--alert-red)); opacity: 1; }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--alert-red)); opacity: 0.8; }
+            100% { transform: scale(1); filter: drop-shadow(0 0 0px var(--alert-red)); opacity: 1; }
+        }
+
+        .warning-box {
+            margin-top: 15px;
+            background: rgba(255, 42, 109, 0.08);
+            border: 1px solid rgba(255, 42, 109, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            
+            /* Animación de entrada para la caja */
+            opacity: 0;
+            animation: tech-slide-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.7s; /* Aparece después de los pasos */
+            
+            transition: transform 0.3s ease;
+        }
+        
+        .warning-box:hover {
+            transform: scale(1.02);
+            background: rgba(255, 42, 109, 0.12);
+        }
+
+        .warning-icon { 
+            color: var(--alert-red); 
+            font-size: 1.5rem; 
+            line-height: 1; 
+            
+            /* Animación de parpadeo infinita */
+            animation: pulse-alert 1.5s infinite ease-in-out;
+        }
+        
+        .warning-text strong { color: #ff8ca7; display: block; margin-bottom: 5px; letter-spacing: 1px; font-family: 'Orbitron'; }
+        .warning-text p { margin: 0; font-size: 0.95rem; color: #ffdae2; }
+
+
+        /* --- TERMINAL DE CANJE (NUEVO FONDO AZUL TECH) --- */
+        .terminal-card {
+            /* Fondo base con tono "Hielo" suave */
+            background-color: #f0f9ff; 
+            /* Patrón de cuadrícula */
+            background-image: 
+                linear-gradient(rgba(14, 165, 233, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.15);
+        }
+
+        /* --- EFECTO DE SCANNER MEJORADO --- */
+        .terminal-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(14, 165, 233, 0.0) 40%,
+                rgba(6, 182, 212, 0.15) 50%, /* Luz Cian sutil */
+                rgba(14, 165, 233, 0.0) 60%,
+                transparent 100%
+            );
+            background-size: 100% 200%;
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+            z-index: 20;
+            mix-blend-mode: normal; 
+        }
+        /* --- TERMINAL DE CANJE (NUEVO FONDO CELESTE HOLOGRÁFICO) --- */
+        .terminal-card {
+            /* Fondo celeste tecnológico definido */
+            background-color: #e0f7fa; 
+            /* Patrón de cuadrícula en azul suave */
+            background-image: 
+                linear-gradient(rgba(2, 136, 209, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(2, 136, 209, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            
+            border: 1px solid rgba(2, 136, 209, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(2, 136, 209, 0.15);
+        }
+
+        /* --- EFECTO DE SCANNER MEJORADO (ÍNDIGO PARA ENCAJAR CON CELESTE) --- */
+        .terminal-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(63, 81, 181, 0.0) 40%,
+                rgba(63, 81, 181, 0.15) 50%, /* Luz Índigo suave que encaja con el celeste */
+                rgba(63, 81, 181, 0.0) 60%,
+                transparent 100%
+            );
+            background-size: 100% 200%;
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+            z-index: 20;
+            mix-blend-mode: normal; 
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        /* MARCO TECNOLÓGICO */
+        .tech-frame {
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border-radius: 16px;
+            pointer-events: none;
+            z-index: 25; 
+            border: 1px solid rgba(2, 136, 209, 0.15);
+        }
+
+        .tech-corner {
+            position: absolute;
+            width: 20px; height: 20px;
+            border: 2px solid #0288d1; /* Azul intermedio para las esquinas */
+            opacity: 0.8;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: none;
+        }
+        .tc-tl { top: 0; left: 0; border-right: none; border-bottom: none; border-radius: 12px 0 0 0; }
+        .tc-tr { top: 0; right: 0; border-left: none; border-bottom: none; border-radius: 0 12px 0 0; }
+        .tc-bl { bottom: 0; left: 0; border-right: none; border-top: none; border-radius: 0 0 0 12px; }
+        .tc-br { bottom: 0; right: 0; border-left: none; border-top: none; border-radius: 0 0 12px 0; }
+
+        .terminal-card:hover .tech-corner {
+            width: 40px; height: 40px;
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(2, 136, 209, 0.4);
+            border-color: #01579b;
+            background: rgba(225, 245, 254, 0.1);
+        }
+
+        .terminal-header {
+            padding: 18px 25px;
+            /* Header celeste un poco más denso */
+            background: rgba(179, 229, 252, 0.95); 
+            border-bottom: 1px solid rgba(2, 136, 209, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 30; 
+            backdrop-filter: blur(5px);
+        }
+
+        .th-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #01579b; /* Azul profundo para contraste */
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+            text-shadow: none;
+            display: flex; align-items: center; gap: 10px;
+        }
+        
+        .th-title::before {
+            content: '>';
+            color: #0288d1;
+            animation: blink 1s infinite;
+        }
+
+        .refresh-btn-container {
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        .status-badge {
+            background: rgba(2, 136, 209, 0.1);
+            color: #0277bd; 
+            border: 1px solid #0277bd;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: none;
+        }
+        .status-dot { width: 8px; height: 8px; background: #0277bd; border-radius: 50%; box-shadow: none; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* --- BOTÓN DE REFRESCAR DISEÑADO --- */
+        .refresh-icon {
+            color: #0277bd;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(2, 119, 189, 0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .refresh-icon:hover { 
+            color: #fff; 
+            background: #0288d1;
+            border-color: #0288d1;
+            box-shadow: 0 0 15px rgba(2, 136, 209, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .refresh-icon.rotating {
+            animation: spin-refresh 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0288d1;
+            color: #fff;
+        }
+
+        @keyframes spin-refresh { 0% { transform: rotate(0deg) scale(0.9); } 100% { transform: rotate(360deg) scale(1.1); } }
+
+        /* WIDGET WRAPPER - FONDO INTERNO CELESTE HOLOGRÁFICO */
+        .widget-wrapper {
+            width: 100%;
+            height: 900px;
+            position: relative;
+            /* CAMBIO CLAVE: Celeste claro consistente */
+            background: #e0f7fa; 
+            clip-path: polygon(
+                0 0, 100% 0, 
+                100% calc(100% - 15px), calc(100% - 15px) 100%, 
+                0 100%
+            );
+            z-index: 5;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            filter: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 30px;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(to top, rgba(19, 9, 36, 0.8), transparent);
+        }
+        .footer-highlight {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        .footer-legal p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        /* --- WHATSAPP --- */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
+            animation: pulse-wa 3s infinite;
+        }
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .wa-float:hover {
+            transform: scale(1.15) rotate(10deg);
+            background: #20b857;
+        }
+        .wa-icon { width: 35px; height: 35px; fill: currentColor; }
+
+        @media (max-width: 600px) {
+            .app-container { padding: 15px; gap: 30px; }
+            .brand-area h1 { font-size: 2.2rem; }
+            .widget-wrapper { height: 850px; }
+            .terminal-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .refresh-btn-container { position: absolute; top: 18px; right: 18px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="scifi-bg"></div>
+    <div class="grid-lines"></div>
+
+    <div class="app-container">
+        
+        <header>
+            <div class="brand-area">
+                <h1>Astral Nexus</h1>
+                <span>Multiservicios</span>
+            </div>
+            <div class="header-separator"></div>
+        </header>
+
+        <div class="content-stack">
+            
+            <!-- PANEL DE INSTRUCCIONES -->
+            <div class="cyber-card protocol-card">
+                <div class="protocol-header">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="var(--neon-pink)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px var(--neon-pink));"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <h2>Protocolo de Canje</h2>
+                </div>
+                
+                <div class="steps-list">
+                    <div class="step-row">
+                        <div class="step-num">1</div>
+                        <div class="step-info">
+                            <h3>Inicia el Proceso</h3>
+                            <p>Ubica tu PIN y prepárate para ingresarlo en la terminal de acceso.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">2</div>
+                        <div class="step-info">
+                            <h3>Datos de Usuario</h3>
+                            <p>Ingresa tus datos personales. Debes ser mayor de 18 años o contar con autorización.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-num">3</div>
+                        <div class="step-info">
+                            <h3>Verificación de ID</h3>
+                            <p>Ingresa tu ID de jugador. <strong>IMPORTANTE:</strong> Haz clic en "Verificar ID" antes de canjear. Asegúrate de que el nombre coincida.</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon">⚠</div>
+                        <div class="warning-text">
+                            <strong>ADVERTENCIA:</strong>
+                            <p>Si procedes con un ID incorrecto, no podremos revertir el canje. Verifica cuidadosamente. Se requiere evidencia para soporte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TERMINAL DE CANJE -->
+            <div class="cyber-card terminal-card">
+                
+                <!-- MARCO TECNOLÓGICO -->
+                <div class="tech-frame">
+                    <div class="tech-corner tc-tl"></div>
+                    <div class="tech-corner tc-tr"></div>
+                    <div class="tech-corner tc-bl"></div>
+                    <div class="tech-corner tc-br"></div>
+                </div>
+
+                <div class="terminal-header">
+                    <div class="th-title">
+                        TERMINAL DE ACCESO
+                    </div>
+                    
+                    <div class="refresh-btn-container">
+                        <div class="status-badge">
+                            <div class="status-dot"></div>
+                            SISTEMA ACTIVO
+                        </div>
+                        <!-- Botón de reinicio mejorado con función JS -->
+                        <div id="refreshBtn" class="refresh-icon" onclick="refreshTerminal()" title="Reiniciar Terminal">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 4v6h-6M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner de Seguridad -->
+                <div style="background: rgba(2, 136, 209, 0.1); padding: 10px; font-size: 0.75rem; text-align: center; color: #01579b; letter-spacing: 1.5px; border-bottom: 1px solid rgba(2, 136, 209, 0.2);">
+                    🔒 CONEXIÓN SEGURA ENCRIPTADA
+                </div>
+
+                <div class="widget-wrapper">
+                    <iframe id="redeem-frame" src="https://redeem.hype.games/widget/" title="Interfaz de Canje" allowfullscreen allow="payment; clipboard-write" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="footer-highlight">
+                ¿Necesitas ayuda con tu canje? Contáctanos directamente.
+            </div>
+            
+            <div class="footer-legal">
+                <p>© 2026 Astral Nexus Multiservicios. TODOS LOS DERECHOS RESERVADOS.</p>
+                <p>Todas las marcas comerciales pertenecen a sus respectivos dueños.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/50581244993" class="wa-float" target="_blank" title="Soporte Astral Nexus">
+        <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <script type="text/javascript">
+        // Claridad
+        (function (c, l, a, r, i, t, y) {            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);        })(window, document, "clarity", "script", "huo2ay2510");
+
+        // Función para recargar la terminal
+        function refreshTerminal() {
+            const iframe = document.getElementById('redeem-frame');
+            const btn = document.getElementById('refreshBtn');
+            
+            // Añadir clase de animación
+            btn.classList.add('rotating');
+            
+            // Recargar iframe: fuerza la recarga solo del widget, no de toda la página
+            iframe.src = iframe.src;
+            
+            // Quitar clase después de la animación (600ms)
+            setTimeout(function() {
+                btn.classList.remove('rotating');
+            }, 600);
+        }
+    </script>
+
+</body>
+</html>
